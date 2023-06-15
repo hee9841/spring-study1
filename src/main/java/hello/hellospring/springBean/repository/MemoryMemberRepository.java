@@ -21,7 +21,7 @@ import java.util.Optional;
 public class MemoryMemberRepository implements MemberRepository {
 
 
-    //임시 저장을 위해
+    //임시 저장을 위해 임시 메모리
     // 공유되는 변수일 때는 동시성문제가 있어서 ConcurrentHashMap을 사용
     private static Map<Long, Member> store = new HashMap<>();
     // 공유되는 변수일 때는 동시성문제가 있어서 AtomicLong 사용
