@@ -22,7 +22,7 @@ import org.junit.jupiter.api.Test;
  * -----------------------------------------------------------
  * 2023-06-15        asdfz       최초 생성
  */
-class MemeberServiceTest {
+class MemberServiceTest {
 
     /*
         MemeberService memeberService = new MemeberService();
@@ -38,7 +38,7 @@ class MemeberServiceTest {
      */
 
     //A-2 (beforeEache로)
-    MemeberService memeberService;
+    MemberService memberService;
     MemoryMemberRepository memberRepository;
 
     @BeforeEach
@@ -48,7 +48,7 @@ class MemeberServiceTest {
         // -> 서비스 입장에서는 외부에서 리포지토리를 넣어줌
         // -> 이런거를 dependency injection(DI, 의존관계 주입)
         memberRepository = new MemoryMemberRepository();
-        memeberService = new MemeberService(memberRepository);
+        memberService = new MemberService(memberRepository);
     }
 
 
@@ -68,10 +68,10 @@ class MemeberServiceTest {
         member.setName("hello");
 
         //when
-        Long saveId = memeberService.join(member);
+        Long saveId = memberService.join(member);
 
         //then
-        Member findMeber = memeberService.findOne(saveId).get();
+        Member findMeber = memberService.findOne(saveId).get();
 
         assertThat(member.getName()).isEqualTo(findMeber.getName());
 
@@ -98,10 +98,10 @@ class MemeberServiceTest {
             }
          */
 
-        memeberService.join(member1);
+        memberService.join(member1);
         //try catch 대신 사용가능
         IllegalStateException e = assertThrows(IllegalStateException.class,
-            () -> memeberService.join(member2));
+            () -> memberService.join(member2));
         assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다.");
 
         //then

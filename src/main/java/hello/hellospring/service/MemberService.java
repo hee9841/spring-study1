@@ -17,11 +17,11 @@ import java.util.Optional;
  * -----------------------------------------------------------
  * 2023-06-15        asdfz       최초 생성
  */
-public class MemeberService {
+public class MemberService {
 
     private final MemberRepository memberRepository;
 
-    public MemeberService(MemberRepository memberRepository) {
+    public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
 
