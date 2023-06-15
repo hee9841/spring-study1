@@ -1,4 +1,4 @@
-package hello.hellospring.domain;
+package hello.hellospring.compentScan.domain;
 
 /**
  * packageName    : hello.hellospring.domain
@@ -11,7 +11,7 @@ package hello.hellospring.domain;
  * -----------------------------------------------------------
  * 2023-06-13        asdfz       최초 생성
  */
-public class Member {
+public class ComponentScanMember {
 
     private Long id;
     private String name;

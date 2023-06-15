@@ -3,8 +3,9 @@ package hello.hellospring.service;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import hello.hellospring.domain.Member;
-import hello.hellospring.repository.MemoryMemberRepository;
+import hello.hellospring.compentScan.domain.ComponentScanMember;
+import hello.hellospring.compentScan.repository.ComponentScanMemoryMemberRepository;
+import hello.hellospring.compentScan.service.ComponentScanMemberService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -22,7 +23,7 @@ import org.junit.jupiter.api.Test;
  * -----------------------------------------------------------
  * 2023-06-15        asdfz       최초 생성
  */
-class MemberServiceTest {
+class ComponentScanComponentScanMemberServiceTest {
 
     /*
         MemeberService memeberService = new MemeberService();
@@ -38,8 +39,8 @@ class MemberServiceTest {
      */
 
     //A-2 (beforeEache로)
-    MemberService memberService;
-    MemoryMemberRepository memberRepository;
+    ComponentScanMemberService componentScanMemberService;
+    ComponentScanMemoryMemberRepository memberRepository;
 
     @BeforeEach
     public void befreEaceh() {
@@ -47,8 +48,8 @@ class MemberServiceTest {
         //-> 같은 리포지토리를 사용함
         // -> 서비스 입장에서는 외부에서 리포지토리를 넣어줌
         // -> 이런거를 dependency injection(DI, 의존관계 주입)
-        memberRepository = new MemoryMemberRepository();
-        memberService = new MemberService(memberRepository);
+        memberRepository = new ComponentScanMemoryMemberRepository();
+        componentScanMemberService = new ComponentScanMemberService(memberRepository);
     }
 
 
@@ -64,27 +65,27 @@ class MemberServiceTest {
     void join() {
 
         //given
-        Member member = new Member();
-        member.setName("hello");
+        ComponentScanMember componentScanMember = new ComponentScanMember();
+        componentScanMember.setName("hello");
 
         //when
-        Long saveId = memberService.join(member);
+        Long saveId = componentScanMemberService.join(componentScanMember);
 
         //then
-        Member findMeber = memberService.findOne(saveId).get();
+        ComponentScanMember findMeber = componentScanMemberService.findOne(saveId).get();
 
-        assertThat(member.getName()).isEqualTo(findMeber.getName());
+        assertThat(componentScanMember.getName()).isEqualTo(findMeber.getName());
 
     }
 
     @Test
     public void 중복_회원_예외() {
         //given
-        Member member1 = new Member();
-        member1.setName("spring");
+        ComponentScanMember componentScanMember1 = new ComponentScanMember();
+        componentScanMember1.setName("spring");
 
-        Member member2 = new Member();
-        member2.setName("spring");
+        ComponentScanMember componentScanMember2 = new ComponentScanMember();
+        componentScanMember2.setName("spring");
 
         //when
         /*
@@ -98,10 +99,10 @@ class MemberServiceTest {
             }
          */
 
-        memberService.join(member1);
+        componentScanMemberService.join(componentScanMember1);
         //try catch 대신 사용가능
         IllegalStateException e = assertThrows(IllegalStateException.class,
-            () -> memberService.join(member2));
+            () -> componentScanMemberService.join(componentScanMember2));
         assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다.");
 
         //then

@@ -2,7 +2,8 @@ package hello.hellospring.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import hello.hellospring.domain.Member;
+import hello.hellospring.compentScan.domain.ComponentScanMember;
+import hello.hellospring.compentScan.repository.ComponentScanMemoryMemberRepository;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -20,9 +21,9 @@ import org.junit.jupiter.api.Test;
  * -----------------------------------------------------------
  * 2023-06-13        asdfz       최초 생성
  */
-class MemoryMemberRepositoryTest {
+class MemoryComponentScanComponentScanMemberRepositoryTest {
 
-    MemoryMemberRepository repository = new MemoryMemberRepository();
+    ComponentScanMemoryMemberRepository repository = new ComponentScanMemoryMemberRepository();
 
     //하나의 test method가 실행이 끝날때마다 아래 메소드 실행
     @AfterEach
@@ -37,13 +38,13 @@ class MemoryMemberRepositoryTest {
     @Test
     void save() {
         //실무에서는 build tool이랑 엮어서 testcase 넘어가지 않으면 종료
-        Member member = new Member();
-        member.setName("Spring");
+        ComponentScanMember componentScanMember = new ComponentScanMember();
+        componentScanMember.setName("Spring");
 
-        repository.save(member);
+        repository.save(componentScanMember);
 
         //검증
-        Member result = repository.findById(member.getId()).get();
+        ComponentScanMember result = repository.findById(componentScanMember.getId()).get();
         //jupiter 의 Assertions
 //        Assertions.assertEquals(member, result);
 //        Assertions.assertEquals(member, null);
@@ -51,40 +52,40 @@ class MemoryMemberRepositoryTest {
 
         //Assertions.assertThat(member).isEqualTo(result); 에서 ctrl+enter 치면 static으로 import
         //org.assertj.core의
-        assertThat(member).isEqualTo(result);
+        assertThat(componentScanMember).isEqualTo(result);
     }
 
     @Test
     void findByName() {
 
         //member 저장
-        Member member1 = new Member();
-        member1.setName("Spring1");
-        repository.save(member1);
+        ComponentScanMember componentScanMember1 = new ComponentScanMember();
+        componentScanMember1.setName("Spring1");
+        repository.save(componentScanMember1);
 
         //복사한 다음 변수 클릭 수 shift + F6하면 자동 변경
-        Member member2 = new Member();
-        member2.setName("Spring2");
-        repository.save(member2);
+        ComponentScanMember componentScanMember2 = new ComponentScanMember();
+        componentScanMember2.setName("Spring2");
+        repository.save(componentScanMember2);
 
-        Member result = repository.findByName("Spring1").get();
+        ComponentScanMember result = repository.findByName("Spring1").get();
 
-        assertThat(result).isEqualTo(member1);
+        assertThat(result).isEqualTo(componentScanMember1);
 
     }
 
     @Test
     void findAll() {
         //member 저장
-        Member member1 = new Member();
-        member1.setName("Spring1");
-        repository.save(member1);
+        ComponentScanMember componentScanMember1 = new ComponentScanMember();
+        componentScanMember1.setName("Spring1");
+        repository.save(componentScanMember1);
 
-        Member member2 = new Member();
-        member2.setName("Spring1");
-        repository.save(member2);
+        ComponentScanMember componentScanMember2 = new ComponentScanMember();
+        componentScanMember2.setName("Spring1");
+        repository.save(componentScanMember2);
 
-        List<Member> result = repository.findAll();
+        List<ComponentScanMember> result = repository.findAll();
 
         assertThat(result.size()).isEqualTo(2);
     }

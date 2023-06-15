@@ -1,6 +1,6 @@
-package hello.hellospring.controller;
+package hello.hellospring.compentScan.controller;
 
-import hello.hellospring.service.MemberService;
+import hello.hellospring.compentScan.service.ComponentScanMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Controller;
  * 2023-06-15        asdfz       최초 생성
  */
 @Controller
-public class MemberController {
+public class ComponentScanMemberController {
     //처음에 spring이 작동할 떄
     //스프링 컨테이너에서 컨트롤러 어노테이션이 있으면
     //해당 객체를 생성해서 넣어두고 스프링에서 관리 함
@@ -37,10 +37,10 @@ public class MemberController {
 
         해당 member 서비스를 가보면 순수 자바 클래스임
      */
-    private final MemberService service;
+    private final ComponentScanMemberService service;
 
     @Autowired
-    public MemberController(MemberService service) {
+    public ComponentScanMemberController(ComponentScanMemberService service) {
         this.service = service;
     }
 
