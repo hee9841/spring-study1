@@ -3,7 +3,6 @@ package hello.hellospring.repository;
 import hello.hellospring.domain.Member;
 import java.util.List;
 import java.util.Optional;
-import org.springframework.stereotype.Repository;
 
 /**
  * packageName    : hello.hellospring.repository
@@ -16,7 +15,7 @@ import org.springframework.stereotype.Repository;
  * -----------------------------------------------------------
  * 2023-06-13        asdfz       최초 생성
  */
-@Repository
+
 public interface MemberRepository {
 
     //기능

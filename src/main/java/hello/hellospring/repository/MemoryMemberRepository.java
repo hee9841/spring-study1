@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import org.springframework.stereotype.Repository;
 
 /**
  * packageName    : hello.hellospring.repository
@@ -18,6 +19,7 @@ import java.util.Optional;
  * -----------------------------------------------------------
  * 2023-06-13        asdfz       최초 생성
  */
+@Repository
 public class MemoryMemberRepository implements MemberRepository {
 
 
