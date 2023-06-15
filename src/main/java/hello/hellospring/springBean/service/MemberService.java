@@ -1,30 +1,29 @@
-package hello.hellospring.service;
+package hello.hellospring.springBean.service;
 
-import hello.hellospring.domain.Member;
-import hello.hellospring.repository.MemberRepository;
+
+import hello.hellospring.springBean.domain.Member;
+import hello.hellospring.springBean.repository.MemberRepository;
 import java.util.List;
 import java.util.Optional;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 /**
- * packageName    : hello.hellospring.service
- * fileName       : MemeberService
+ * packageName    : hello.hellospring.springBean.service
+ * fileName       : SpringBeanMemberService
  * author         : asdfz
  * date           : 2023-06-13
- * description    : 회원 서비스
+ * description    : 자바로 스프링 빈 생성을 위한 파일
  * <p>
  * ===========================================================
  * DATE              AUTHOR             NOTE
  * -----------------------------------------------------------
  * 2023-06-15        asdfz       최초 생성
  */
-@Service
+
 public class MemberService {
 
     private final MemberRepository memberRepository;
 
-    @Autowired
+
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
