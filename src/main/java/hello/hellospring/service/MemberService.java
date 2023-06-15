@@ -4,6 +4,7 @@ import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.stereotype.Service;
 
 /**
  * packageName    : hello.hellospring.service
@@ -17,6 +18,7 @@ import java.util.Optional;
  * -----------------------------------------------------------
  * 2023-06-15        asdfz       최초 생성
  */
+@Service
 public class MemberService {
 
     private final MemberRepository memberRepository;
