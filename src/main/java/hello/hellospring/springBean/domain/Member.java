@@ -1,5 +1,10 @@
 package hello.hellospring.springBean.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 /**
  * packageName    : hello.hellospring.springBean.domain
  * fileName       : SpringBeanMember
@@ -11,8 +16,12 @@ package hello.hellospring.springBean.domain;
  * -----------------------------------------------------------
  * 2023-06-13        asdfz       최초 생성
  */
+@Entity
 public class Member {
 
+    //DB가 생성해주는 거를 IDENTITY로 함
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
 
