@@ -1,8 +1,10 @@
 package hello.hellospring.springBean;
 
+import hello.hellospring.springBean.repository.JdbcTemplateMemberRepository;
 import hello.hellospring.springBean.repository.MemberRepository;
-import hello.hellospring.springBean.repository.MemoryMemberRepository;
 import hello.hellospring.springBean.service.MemberService;
+import javax.sql.DataSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -21,15 +23,34 @@ import org.springframework.context.annotation.Configuration;
 public class SpringConfig {
 
 
+    private DataSource dataSource;
+
+
     @Bean
     public MemberService mberService() {
         return new MemberService(memberRepository());
     }
 
 
+    @Autowired
+    public SpringConfig(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
     @Bean
     public MemberRepository memberRepository() {
-        return new MemoryMemberRepository();
+        /*
+            componentScan방식, 메모리 방식
+            return new MemoryMemberRepository();
+
+         */
+        /*
+            //jdbc 방식
+            return new JdbcMemberRepository(dataSource);
+         */
+
+        //jdbc tamplate 방식
+        return new JdbcTemplateMemberRepository(dataSource);
     }
 
 }
