@@ -66,6 +66,12 @@ public class SpringConfig {
 
     }
 
+    //AOP
+//    @Bean
+//    public TimeTraceAop TimeTraceAop() {
+//        return new TimeTraceAop();
+//    }
+
 
      /*
             spring jpa data 제외 다른 방식들
