@@ -2,8 +2,10 @@ package hello.hellospring.springBean.repository;
 
 import hello.hellospring.springBean.domain.Member;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * packageName    : hello.hellospring.springBean.repository
@@ -21,26 +23,28 @@ public class JpaMemberRepository implements MemberRepository {
 
     private final EntityManager em;
 
+    //트렌젝션 테스트를 위해서(강의X)
+    private EntityTransaction tr;
+
     public JpaMemberRepository(EntityManager em) {
         this.em = em;
+    }
+
+    private void getTr() {
+        this.tr = this.em.getTransaction();
     }
 
 
     //@Transactional
     @Override
+    @Transactional
     public Member save(Member member) {
-//        EntityTransaction etr = em.getTransaction();
-//
-//        etr.begin();
-//        em.persist(member);
-//        etr.rollback();
 
         em.persist(member);
-
         return member;
-        //return null;
 
     }
+
 
     @Override
     public Optional<Member> findById(Long id) {
